@@ -69,7 +69,7 @@ function joinRoom(socket,room){
 		text:nickName[socket.id]+' has joined '+room+'.'
 	});
 	//确定有哪些用户在这个房间里
-	var usersInRoom=io.socket.clients(room);
+	var usersInRoom=io.sockets.clients(room);
 	//如果不止一个用户在这个房间里，汇总下都是谁
 	if(usersInRoom.length>1){
 		var usersInRoomSummary='Users currently in '+room+":";

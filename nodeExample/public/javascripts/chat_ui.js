@@ -14,18 +14,16 @@ function processUserInput(chatApp,socket){
 	var systemMessage;
 
 	//如果用户输入的内容以斜杠（/）开头，将其作为聊天命令
-	if(message.chatAt(0) == '/'){
-		systemMessage = chatApp.processCommand(message);
+	if(message.charAt(0)=='/'){
+		systemMessage=chatApp.processCommand(message);
 		if(systemMessage){
-			$('#message').append(divSystemContentElement(systemMessage));
-		}
-	}else{
+            $('#messages').append(divSystemContentElement(systemMessage));
+        }
+    }else{
 		//将非命令输入广播给其他用户
 		chatApp.sendMessage($('#room').text(),message);
-		$('#messages').append(divEscapedContentElement(message));
-		$('#messages').scrollTop($('#messages').prop('scrollHeight'));
-	}
-
-	$('#send-message').val('');
+        $('#messages').append(divSystemContentElement(message));
+        $('#messages').scrollTop($('#messages').prop('scrollHeight'));
+    }
+    $('#send-message').val('');
 }
-
