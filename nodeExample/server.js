@@ -5,24 +5,25 @@ var fs=require('fs');
 var path=require('path');
 //附加的mime模块有根据文件扩展名得出MIME类型的能力
 var mime=require('mime');
+var chatServer=require('./lib/chat_server');
 
 //cache是用来缓存文件内容的对象
-var cache={}
+var cache={};
 
 //文件不存在时发送404错误
-function send404(){
+function send404(response){
 	response.writeHead(404,{'Content-Type':'text/plain'});
 	response.write('Error 404: resource not found.');
 	response.end();
 }
 
 //提供文件数据服务，发送文件内容
-function sendFile(response,filePath,fillContents){
-	response.writeHead(
-		200,
-		{"Content-Type":mime.lookup(path.basename(filePath))}
-	);
-	response.end(fillContents)
+function sendFile(response,filePath,fileContents){
+    response.writeHead(
+       200,
+       {"content-Type":mime.lookup(path.basename(filePath))}
+    );
+    response.end(fileContents);
 }
 
 //判断文件是否缓存，如果是就返回。如果没缓存，就从硬盘读取并返回。如果不存在则返回404
@@ -45,9 +46,9 @@ function serveStatic(response,cache,absPath){
 					}
 				})
 			}else{
-				sendFile(response);
+				send404(response);
 			}
-		})
+		});
 	}
 }
 
@@ -72,5 +73,5 @@ server.listen(3000,function(){
 });
 
 //添加socket
-var chatServer=require('./lib/chat_server');
+
 chatServer.listen(server);
