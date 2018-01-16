@@ -5,7 +5,6 @@ var fs=require('fs');
 var path=require('path');
 //附加的mime模块有根据文件扩展名得出MIME类型的能力
 var mime=require('mime');
-var chatServer=require('./lib/chat_server');
 
 //cache是用来缓存文件内容的对象
 var cache={};
@@ -73,5 +72,5 @@ server.listen(3000,function(){
 });
 
 //添加socket
-
+var chatServer=require('./lib/chat_server');
 chatServer.listen(server);
