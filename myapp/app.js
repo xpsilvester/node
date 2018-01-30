@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var birds=require('./routes/birds');
 var test=require('./routes/test');
+var login=require('./routes/login');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/birds',birds);
+app.use('/login',login);
 app.use('/test',test);
 app.use('/', index);
 app.use('/users', users);

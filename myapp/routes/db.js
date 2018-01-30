@@ -17,4 +17,13 @@ function query(sql, callback) {
         });
     });
 }
+function query(sql, data ,callback) {
+    pool.getConnection(function (err, connection) {
+        // Use the connection
+        connection.query(sql, data ,function (err, rows) {
+            callback(err, rows);
+            connection.release();//释放链接
+        });
+    });
+}
 exports.query = query;

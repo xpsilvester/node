@@ -33,6 +33,6 @@ var city_scores = [
 router.get('/', function(req, res, next) {  
   res.render('index', { citys: city_names, cscores: city_scores, name:'liuchuanchuan',h1:'who are you'});  
 });  
-  
+ 
   
 module.exports = router;  
