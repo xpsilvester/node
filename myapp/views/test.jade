@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1= 'test'
+	p #{name}
+	ul
+		each val in testResults
+			li= val.name
+
+  
+
