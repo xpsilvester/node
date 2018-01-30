@@ -12,7 +12,9 @@ block content
         input(type="checkbox",name="remember")
         span remember password
         br
-        input(type="submit",value="登陆")
+        input(type="submit",value="form登陆")
+        br
+        input(type="button",value="ajax登陆",class="login")
 
     a(href="/") home
     br
@@ -35,7 +37,9 @@ block content
         input(type="checkbox",name="remember")
         span remember password
         br
-        input(type="submit",value="注册")
+        input(type="submit",value="form注册")
+        br
+        input(type="button",value="ajax注册",class="register")
 
     a(href="/") home
     br
@@ -43,3 +47,26 @@ block content
     br
     p= message
     p= name
+
+    script(src="javascripts/jquery-1.12.2.js",type="text/javascript")
+    script(type='text/javascript').
+        $('.login').on('click',function(){
+            $.ajax({    
+                url:"/login/verify",
+                type:"get",
+                data:{name:$('#login input').eq(0).val(),pwd:$('#register input').eq(1).val()},
+                success:function(res){ 
+                    alert(res);
+                }
+            });
+        })
+        $('.register').on('click',function(){
+            $.ajax({    
+                url:"/login/register",
+                type:"get",
+                data:{name:$('#register input').eq(0).val(),pwd:$('#register input').eq(1).val()},
+                success:function(res){ 
+                    alert(res);
+                }
+            });
+        })
