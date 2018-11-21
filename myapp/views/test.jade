@@ -1,11 +1,14 @@
-extends layout
-
+extends layout  
 block content
     h1= 'test'
     p #{name}
     ul
         each val in testResults
             li= val.name
+    #app
+        h1 react test
+    block scripts
+        script(src="/javascripts/bundle.js")
             
 
   

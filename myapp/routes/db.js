@@ -26,4 +26,7 @@ function query(sql, data ,callback) {
         });
     });
 }
+
+
+
 exports.query = query;
