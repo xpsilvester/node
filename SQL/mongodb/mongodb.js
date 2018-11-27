@@ -126,7 +126,7 @@ let unionTable = (table1,tbale2,name1,name2,newTable)=>{
 
 //createTable("test"); 
 //insertData("uidk",[{ name: "xpsilvester", score: 100 },{name:"xp",score:90}]);
-//searchData("uidi",{name:"xpsilvester"},{url:-1});
+searchData("uidi",{name:"xpsilvester"},{url:-1});
 //updateData("site",{name:"xp"},{url:"xp.com"});
 //deleteData("site",{name:"xp"});
 //unionTable("uidi","uidk","name","name1","uids");
